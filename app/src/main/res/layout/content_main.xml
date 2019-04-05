@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/side_nav_bar"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imagemap"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:padding="8dp"
+            android:src="@drawable/gpsimage" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/imagetimetable"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"
+                android:src="@drawable/timetableimage" />
+
+            <ImageView
+                android:id="@+id/imagefacerecog"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:src="@drawable/facerecogimage" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/side_nav_bar">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Today !!!"
+            android:padding="2dp"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
+    </RelativeLayout>
+
+
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/recycle"
+       android:padding="1dp"
+       android:background="@drawable/side_nav_bar"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="2dp">
+
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/screenshot"
+        android:layout_marginTop="8dp"
+        android:id="@+id/imgbot"/>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/textMessage"
+        android:layout_toEndOf="@+id/imgbot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:elevation="3dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/back_left"
+        android:padding="16dp"
+        android:textColor="@android:color/background_dark"
+        android:text="this is bot "
+        android:textStyle="bold"
+        android:textSize="20sp" />
+</RelativeLayout>
