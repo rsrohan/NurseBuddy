@@ -24,27 +24,15 @@
             android:padding="8dp"
             android:src="@drawable/gpsimage" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="4dp">
 
-            <ImageView
-                android:id="@+id/imagetimetable"
-                android:layout_width="200dp"
-                android:layout_height="100dp"
-                android:layout_alignParentRight="true"
-                android:padding="10dp"
-                android:src="@drawable/timetableimage" />
+        <ImageView
+            android:id="@+id/imagetimetable"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:src="@drawable/timetableimage" />
 
-            <ImageView
-                android:id="@+id/imagefacerecog"
-                android:layout_width="200dp"
-                android:layout_height="100dp"
-                android:padding="10dp"
-                android:src="@drawable/facerecogimage" />
 
-        </RelativeLayout>
 
 
     </LinearLayout>

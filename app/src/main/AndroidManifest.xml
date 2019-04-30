@@ -72,7 +72,6 @@
             android:name=".TimeTableActivity"
             android:label="@string/title_activity_time_table"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FaceActivity" />
         <activity android:name=".PasswordActivity" />
         <activity
             android:name=".AdminMap"

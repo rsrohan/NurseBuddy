@@ -92,17 +92,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-
-
-
-
-
-
-
-
-
         gps=findViewById(R.id.imagemap);
-        facerecog=findViewById(R.id.imagefacerecog);
+
         timetable=findViewById(R.id.imagetimetable);
 
         mAuth=FirebaseAuth.getInstance();
@@ -180,13 +171,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(i);
             }
         });
-        facerecog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // Toast.makeText(MainActivity.this, "Under progress", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this, FaceActivity.class));
-            }
-        });
+
         timetable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
