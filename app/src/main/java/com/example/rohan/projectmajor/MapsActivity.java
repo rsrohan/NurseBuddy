@@ -11,6 +11,7 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -104,20 +107,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         LatLng myLoc = new LatLng(lati, longi);
-        LatLng jaypeehospital = new LatLng(28.514434,77.371749);
-        LatLng market = new LatLng(28.570776,77.326095);
-        LatLng office = new LatLng(28.537856, 77.342037);
-        LatLng home = new LatLng(28.629915, 77.372483);
-        LatLng gym = new LatLng(28.538572, 77.364504);
-        mMap.addMarker(new MarkerOptions().position(jaypeehospital).title("My Hospital"));
-        mMap.addMarker(new MarkerOptions().position(market).title("Market"));
-        mMap.addMarker(new MarkerOptions().position(office).title("My OFFICE"));
-        mMap.addMarker(new MarkerOptions().position(home).title("MY HOME"));
-        mMap.addMarker(new MarkerOptions().position(gym).title("GYM"));
+//        LatLng jaypeehospital = new LatLng(28.514434,77.371749);
+//        LatLng market = new LatLng(28.570776,77.326095);
+//        LatLng office = new LatLng(28.537856, 77.342037);
+//        LatLng home = new LatLng(28.629915, 77.372483);
+//        LatLng gym = new LatLng(28.538572, 77.364504);
+        ArrayList<MyLatLng> myLatLngArrayList = new ArrayList<>();
+        myLatLngArrayList= getIntent().getParcelableArrayListExtra("latlngarraylist");
+        Log.d("tag", "onMapReady: "+myLatLngArrayList);
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(Double.parseDouble(myLatLngArrayList.get(0).getlat())
+                        ,Double.parseDouble(myLatLngArrayList.get(0).getlng())))
+                .title("My Hospital"));
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(Double.parseDouble(myLatLngArrayList.get(1).getlat())
+                        ,Double.parseDouble(myLatLngArrayList.get(1).getlng())))
+                .title("Market"));
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(Double.parseDouble(myLatLngArrayList.get(2).getlat())
+                        ,Double.parseDouble(myLatLngArrayList.get(2).getlng())))
+                .title("My OFFICE"));
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(Double.parseDouble(myLatLngArrayList.get(3).getlat())
+                        ,Double.parseDouble(myLatLngArrayList.get(3).getlng())))
+                .title("MY HOME"));
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(Double.parseDouble(myLatLngArrayList.get(4).getlat())
+                        ,Double.parseDouble(myLatLngArrayList.get(4).getlng())))
+                .title("GYM"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(myLoc));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(13.0f));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
             ActivityCompat.requestPermissions(this,new String[]{ Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},RC);
             return;
         }

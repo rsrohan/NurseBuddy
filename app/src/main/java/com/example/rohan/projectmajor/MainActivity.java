@@ -36,6 +36,7 @@ import com.bumptech.glide.Glide;
 import com.example.rohan.projectmajor.Fragments.RecyclerAdapter;
 import com.example.rohan.projectmajor.Fragments.Routine;
 import com.example.rohan.projectmajor.Fragments.adapter;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,7 +65,6 @@ public class MainActivity extends AppCompatActivity
     String Lat, Lng;
     double lati,longi;
     FirebaseUser firebaseUser;
-    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference, databaseReference2;
     ImageView gps,facerecog,timetable;
 
@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity
     //String time2[]={"7:00","9:00","11:00","13:00","14:00","19:00","20:00"};
 
     List<Routine> routineList = new ArrayList<Routine>();
-    ListView list;
-    adapter a1;
+
     RecyclerView recyclerView;
+    ArrayList<MyLatLng> latLngArrayList = new ArrayList<>();
     //private static final String MYChannel_ID="com.example.rohan.projectmajor.PROJECT";
 
     @Override
@@ -90,15 +90,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-
-
-
-
-
-
 
 
         gps=findViewById(R.id.imagemap);
@@ -131,6 +122,18 @@ public class MainActivity extends AppCompatActivity
         final String userid= firebaseUser.getUid();
         databaseReference=FirebaseDatabase.getInstance().getReference("UsersLocation").child(userid);
 
+
+        MyLatLng jaypeehospital = new MyLatLng("28.514434","77.371749");
+        MyLatLng market = new MyLatLng("28.570776","77.326095");
+        MyLatLng office = new MyLatLng("28.537856", "77.342037");
+        MyLatLng home = new MyLatLng("28.629915", "77.372483");
+        MyLatLng gym = new MyLatLng("28.538572", "77.364504");
+
+        latLngArrayList.add(jaypeehospital);
+        latLngArrayList.add(market);
+        latLngArrayList.add(office);
+        latLngArrayList.add(home);
+        latLngArrayList.add(gym);
 
         lm=(LocationManager) getSystemService(LOCATION_SERVICE);
         LocationListener locationListener = new LocationListener() {
@@ -177,6 +180,7 @@ public class MainActivity extends AppCompatActivity
                 Intent i= new Intent(MainActivity.this,MapsActivity.class);
                 i.putExtra("Lat",lati);
                 i.putExtra("Lng",longi);
+                i.putExtra("latlngarraylist", latLngArrayList);
                 startActivity(i);
             }
         });
