@@ -2,9 +2,7 @@ package com.example.rohan.projectmajor;
 
 import com.google.firebase.database.FirebaseDatabase;
 
-/**
- * Created by divyanshu on 25-08-2016.
- */
+
 public class FirebaseApp extends android.app.Application {
 
     @Override

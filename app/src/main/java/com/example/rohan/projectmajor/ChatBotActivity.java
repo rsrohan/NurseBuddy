@@ -255,13 +255,11 @@ public class ChatBotActivity extends AppCompatActivity implements AIListener {
 
 
                     viewHolder.rightText.setText(model.getMsgText());
-
                     viewHolder.rightText.setVisibility(View.VISIBLE);
                     viewHolder.leftText.setVisibility(View.GONE);
                 }
                 else {
                     viewHolder.leftText.setText(model.getMsgText());
-
                     viewHolder.rightText.setVisibility(View.GONE);
                     viewHolder.leftText.setVisibility(View.VISIBLE);
                 }
