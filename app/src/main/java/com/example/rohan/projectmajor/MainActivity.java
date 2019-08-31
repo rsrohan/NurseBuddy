@@ -45,6 +45,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -64,7 +66,6 @@ public class MainActivity extends AppCompatActivity
     String Lat, Lng;
     double lati,longi;
     FirebaseUser firebaseUser;
-    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference, databaseReference2;
     ImageView gps,facerecog,timetable;
 
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity
     ListView list;
     adapter a1;
     RecyclerView recyclerView;
+    ArrayList<MyLatLng> latLngArrayList = new ArrayList<>();
     //private static final String MYChannel_ID="com.example.rohan.projectmajor.PROJECT";
 
     @Override
@@ -95,6 +97,8 @@ public class MainActivity extends AppCompatActivity
         gps=findViewById(R.id.imagemap);
 
         timetable=findViewById(R.id.imagetimetable);
+
+        facerecog=findViewById(R.id.imagefacerecog);
 
         mAuth=FirebaseAuth.getInstance();
         authStateListener=new FirebaseAuth.AuthStateListener() {
@@ -163,6 +167,13 @@ public class MainActivity extends AppCompatActivity
             lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 
         }
+        facerecog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(MainActivity.this,faceactivity.class);
+                startActivity(i);
+            }
+        });
 
         gps.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,6 +229,17 @@ public class MainActivity extends AppCompatActivity
 
 
         }
+        MyLatLng jaypeehospital = new MyLatLng("28.514434","77.371749");
+        MyLatLng market = new MyLatLng("28.570776","77.326095");
+        MyLatLng office = new MyLatLng("28.537856", "77.342037");
+        MyLatLng home = new MyLatLng("28.629915", "77.372483");
+        MyLatLng gym = new MyLatLng("28.538572", "77.364504");
+
+        latLngArrayList.add(jaypeehospital);
+        latLngArrayList.add(market);
+        latLngArrayList.add(office);
+        latLngArrayList.add(home);
+        latLngArrayList.add(gym);
 
         databaseReference2=FirebaseDatabase.getInstance().getReference("UsersTimeTable").child("gj8YkpyEEhN3y80eVOu5cOfxc7q2");
 
@@ -366,6 +388,17 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
+        Ion.with(getApplicationContext()).load("https://ecjr5cnikh.execute-api.us-east-1.amazonaws.com/dev").asString().setCallback(new FutureCallback<String>() {
+            @Override
+            public void onCompleted(Exception e, String result) {
+
+                if(result.contains("empty"))
+                {
+                    showNotification(MainActivity.this, "Medicine running out", "Time to refill the box.");
+                }
+
+            }
+        });
 
 
         //Toast.makeText(this, String.valueOf(l), Toast.LENGTH_LONG).show();
@@ -419,12 +452,16 @@ public class MainActivity extends AppCompatActivity
             Intent i= new Intent(MainActivity.this,MapsActivity.class);
             i.putExtra("Lat",lati);
             i.putExtra("Lng",longi);
+            i.putParcelableArrayListExtra("latlngarraylist",latLngArrayList);
             startActivity(i);
 
         } else if (id == R.id.bot) {
             startActivity(new Intent(MainActivity.this, ChatBotActivity.class));
-            
-        } else if (id == R.id.logOut) {
+
+        } else if (id==R.id.medicine){
+            startActivity(new Intent(MainActivity.this, StatusMedicine.class));
+        }
+        else if (id == R.id.logOut) {
 
             mAuth.signOut();
 

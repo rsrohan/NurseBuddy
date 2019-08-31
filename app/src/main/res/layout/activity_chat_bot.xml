@@ -9,21 +9,23 @@
     tools:context="com.example.rohan.projectmajor.ChatBotActivity">
 
 
-
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewqq"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="10dp"
-        android:paddingBottom="50dp"
+        android:paddingBottom="25dp"
         android:clipToPadding="false"
-        android:background="@drawable/chatbg"
+        android:background="@drawable/side_nav_bar"
+        android:layout_above="@+id/niche"
         />
 
 
     <RelativeLayout
+        android:id="@+id/niche"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/side_nav_bar"
         android:layout_alignParentBottom="true">
 
 
@@ -39,7 +41,7 @@
             android:layout_centerVertical="true"
             >
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editTextqq"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -51,7 +53,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/addBtn"
+            android:id="@+id/addBtnqq"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
@@ -66,7 +68,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_menu_send"
+                android:src="@drawable/ic_mic_white_24dp"
                 android:tint="#fff"/>
         </RelativeLayout>
 

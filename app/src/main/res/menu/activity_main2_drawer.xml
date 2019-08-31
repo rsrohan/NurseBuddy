@@ -12,6 +12,10 @@
             android:id="@+id/bot"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="MyBUDDY" />
+        <item
+            android:id="@+id/medicine"
+            android:icon="@drawable/ic_battery_alert_black_24dp"
+            android:title="Medicine Status" />
 
     </group>
 
