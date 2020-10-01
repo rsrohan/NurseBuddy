@@ -121,38 +121,31 @@ public class TimeTableActivity extends AppCompatActivity {
 
             if(position==1)
             {
-                Mon t1= new Mon();
-                return t1;
+                return new Mon();
             }
             else if (position==2)
             {
-                Tue t2= new Tue();
-                return t2;
+                return new Tue();
             }
             else if (position==3)
             {
-                Wed t3= new Wed();
-                return t3;
+                return new Wed();
             }
             else if (position==4)
             {
-                Thu t4= new Thu();
-                return t4;
+                return new Thu();
             }
             else if (position==5)
             {
-                Fri t5= new Fri();
-                return t5;
+                return new Fri();
             }
             else if (position==6)
             {
-                Sat t6= new Sat();
-                return t6;
+                return new Sat();
             }
             else if (position==0)
             {
-                Sun t7= new Sun();
-                return t7;
+                return new Sun();
             }
 
             return null;
